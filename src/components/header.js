@@ -4,16 +4,13 @@ import Image from 'next/image';
 
 export default function Header() {
   return (
-        <div className='flex justify-between flex-row'>
+        <div className='flex items-center justify-between max-w-6xl flex-row'>
             {/* left */}
-            <div className='w-3/4 h-20'>
-                <Image src="/favicon.ico" width={24} height={24}/>
+            <div className='cursor-pointer h-24 w-24 relative'>
+                <Image src="/iconFoggy.png" layout='fill' className='object-contain'/>
             </div>
-            {/* <div class="flex "> */}
-                <div className="basis-1/4">01</div>
-                <div className="basis-1/4">02</div>
-                <div className="basis-1/2">03</div>
-            {/* </sdiv> */}
+            
+            <h1>Right</h1>
 
             {/* middle */}
 
