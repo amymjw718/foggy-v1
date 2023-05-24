@@ -1,14 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-import { MagnifyingGlassIcon } from '@heroicons/react/24/outline';
+import { MagnifyingGlassIcon, PlusCircleIcon } from '@heroicons/react/24/outline';
+import { HomeIcon } from '@heroicons/react/24/solid'
 
 //import '../styles/globals.css'
 
 export default function Header() {
   return (
-        <div className='flex items-center justify-between max-w-6xl flex-row'>
+        <div className='flex items-center justify-between max-w-6xl flex-row mx-4 xl:mx-auto'>
             {/* left */}
-            <div className='cursor-pointer h-24 w-24 relative'>
+            <div className='cursor-pointer h-24 w-24 relative mx-10'>
                 <Image src="/iconFoggy.png" layout='fill' className='object-contain'/>
             </div>
 
@@ -21,8 +22,14 @@ export default function Header() {
             </div>
 
             {/* right */}
+            <div className=''>
+                <div className='flex space-x-4 items-center'>
+                    <HomeIcon className="h-6 cursor-pointer hover:scale-155 transition-transform duration-200 ease-out"/>
+                    <PlusCircleIcon className="h-6 cursor-pointer hover:scale-155 transition-transform duration-200 ease-out"/>
+                    <Image src='' alt='' className='h-10 rounded-full cursor-pointer'/>
+                </div>
+            </div>
 
-            <h1>Right</h1>
 
             
         </div>
