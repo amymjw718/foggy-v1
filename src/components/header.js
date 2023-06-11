@@ -27,7 +27,7 @@ export default function Header() {
                 <div className='flex space-x-4 items-center'>
                     <HomeIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"/>
                     <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"/>
-                    <Image src='' alt='' className='h-10 rounded-full cursor-pointer'/>
+                    <img src="https://i.pravatar.cc/150?img=15" className='h-10 w-10 rounded-full cursor-pointer'/>
                 </div>
             </div>
 
@@ -37,3 +37,4 @@ export default function Header() {
     </div>
   )
 }
+//https://i.pravatar.cc/150?img=15

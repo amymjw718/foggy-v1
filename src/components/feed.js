@@ -1,5 +1,6 @@
 import React from 'react';
 import Story from '../components/Story';
+import Posts from './Posts';
 
 export default function Feed () {
   return (
@@ -8,6 +9,7 @@ export default function Feed () {
             {/* Story */}
             <Story />
             {/* Post */}
+            <Posts />
         </section>
         <section>
             {/* mini profile */}
