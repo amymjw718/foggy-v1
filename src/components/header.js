@@ -25,8 +25,8 @@ export default function Header() {
             {/* right */}
             <div className=''>
                 <div className='flex space-x-4 items-center'>
-                    <HomeIcon className="h-6 cursor-pointer hover:scale-155 transition-transform duration-200 ease-out"/>
-                    <PlusCircleIcon className="h-6 cursor-pointer hover:scale-155 transition-transform duration-200 ease-out"/>
+                    <HomeIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"/>
+                    <PlusCircleIcon className="h-6 cursor-pointer hover:scale-125 transition-transform duration-200 ease-out"/>
                     <Image src='' alt='' className='h-10 rounded-full cursor-pointer'/>
                 </div>
             </div>
