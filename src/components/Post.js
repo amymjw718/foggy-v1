@@ -1,5 +1,5 @@
 import React from 'react';
-import { EllipsisHorizontalIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon } from '@heroicons/react/24/outline';
 
 export default function Post({id,username,userImg,img,caption}) {
   return (
@@ -11,7 +11,18 @@ export default function Post({id,username,userImg,img,caption}) {
             <p className='font-bold flex-1'>{username}</p>
             <EllipsisHorizontalIcon className='h-5'/>
         </div>
+        {/* post img */}
+
         <img src={img} className='object-cover w-full'/>
+
+        {/* button */}
+        <div className='flex justify-between px-4 pt-4 pb-4'>
+          <div className='flex space-x-4'>
+            <HeartIcon className='btn'/>
+            <ChatBubbleBottomCenterIcon className='btn' />
+          </div>
+          <BookmarkIcon className='btn' />
+        </div>
     </div>
   )
 }
