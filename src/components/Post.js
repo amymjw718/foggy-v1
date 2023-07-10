@@ -1,5 +1,5 @@
 import React from 'react';
-import { EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon } from '@heroicons/react/24/outline';
+import { EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
 
 export default function Post({id,username,userImg,img,caption}) {
   return (
@@ -23,6 +23,22 @@ export default function Post({id,username,userImg,img,caption}) {
           </div>
           <BookmarkIcon className='btn' />
         </div>
+
+        {/* comments */}
+
+        <p className='p-5 truncate'>
+          <span className='font-bold mr-2'>{username}</span>
+          {caption}
+        </p>
+
+        {/* post comment and input box */}
+        <form className='flex items-center p-4'>
+          <FaceSmileIcon className='h-7'/>
+          <input className='border-none flex-1 focus:ring-0' type='text' placeholder='Enter your comment here...' />
+          <button className='text-blue-400 font-bold'>Post</button>
+        </form>
+
+
     </div>
   )
 }
