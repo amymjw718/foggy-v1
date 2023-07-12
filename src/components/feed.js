@@ -1,6 +1,7 @@
 import React from 'react';
 import Story from '../components/Story';
 import Posts from './Posts';
+import MiniProfile from './MiniProfile';
 
 export default function Feed () {
   return (
@@ -12,8 +13,12 @@ export default function Feed () {
             <Posts />
         </section>
         <section className='hidden md:inline-grid md:col-span-1'>
+          <div className='fixed w-[380px]'>
             {/* mini profile */}
+            <MiniProfile />
             {/* list */}
+
+          </div>
         </section>
         
     </main>
