@@ -17,7 +17,7 @@ export default function Suggestions() {
             }
         ));
         setSuggestions(Suggestions);
-        console.log(Suggestions);
+        //console.log(Suggestions);
     },[])
 
   return (
