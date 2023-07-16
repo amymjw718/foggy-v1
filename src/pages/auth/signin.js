@@ -15,8 +15,9 @@ export default function signin({providers}) {
                         return (
                             <div key={provider.name} className="flex flex-col items-center">
                                 <img className="w-32 object-cover" src="https://t3.ftcdn.net/jpg/05/69/99/88/360_F_569998896_ub8700Rl1XcS3uJKxKtxCt2MibDfDMu0.jpg"/>
+                                <h3 className="text-lg my-8 text-center font-bold">Welcome to Foggy</h3>
+                                <button onClick={()=>signIn(provider.id,{callbackUrl:"/"})} className="text-lg bg-blue-400 rounded-lg p-3 text-white hover:bg-blue-500 font-bold">Sign In with {provider.name}</button>
                                 <p className="text-sm italic my-8 text-center">This app is create for learning.</p>
-                                <button onClick={()=>signIn(provider.id,{callbackUrl:"/"})} className="bg-blue-400 rounded-lg p-3 text-white hover:bg-blue-500">Sign In with {provider.name}</button>
                             </div>
                         )
                     })
