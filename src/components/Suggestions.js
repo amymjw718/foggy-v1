@@ -7,7 +7,7 @@ export default function Suggestions() {
     const [Suggestions, setSuggestions] = useState([]);
 
     useEffect(() => {
-        const Suggestions = minifaker.array(5, (i) => (
+        const Suggestions = minifaker.array(3, (i) => (
             {
                 userName: minifaker.username({locale:"en"}).toLowerCase(),
                 jobTitle: minifaker.jobTitle(),

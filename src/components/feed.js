@@ -21,7 +21,8 @@ export default function Feed () {
             <MiniProfile />
             {/* Suggestions list */}
             <Suggestions />
-
+            {/* todo lisr */}
+            
           </div>
         </section>
         
