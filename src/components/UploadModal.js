@@ -30,7 +30,7 @@ export default function UploadModal() {
 
     async function uploadPost(){
         if(loading) return;
-        setLoading(!loading);
+        setLoading(true);
         // setOpen(!open);
         const docRef = await addDoc(collection(db, "posts"),{
             caption: captionRef.current.value,
@@ -47,7 +47,7 @@ export default function UploadModal() {
                 })
             }
          )
-         setLoading(!loading);
+         setLoading(false);
          setOpen(!open);
          setSelectedFile(null);
     }
