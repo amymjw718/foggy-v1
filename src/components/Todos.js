@@ -42,7 +42,7 @@ export default function Todos() {
                     <h2 className='font-semibold text-sm'>{s.name}</h2>
                     {/* <h3 className='text-gray-400 text-sm truncate w-[230px]'>{s.isCompleted}</h3> */}
                 </div>
-                <button className='font-semibold text-blue-400 text-sm'>Delete</button>
+                <button className='font-semibold text-red-400 text-sm'>Delete</button>
             </div>
         ))}
         <div className='flex text-center justify-center'>
