@@ -1,10 +1,13 @@
 //import React from 'react'
 // import minifaker from  'minifaker';
 import React, { useEffect, useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { todoState } from '../../atom/modalAtom';
 
 export default function Todos() {
 
     const [Todos, setTodos] = useState([]);
+    const [openTodo, setOpenTodo] = useRecoilState(todoState);
 
     useEffect(() => {
         const Todos =
@@ -42,6 +45,9 @@ export default function Todos() {
                 <button className='font-semibold text-blue-400 text-sm'>Delete</button>
             </div>
         ))}
+        <div className='flex text-center justify-center'>
+            <button onClick={()=>setOpenTodo(!openTodo)} className='h-10 w-10 bg-blue-300 text-white font-bold rounded-full p-2 mt-5 shadow-md hover:bg-blue-400'>+</button>
+        </div>
     </div>
   )
 }

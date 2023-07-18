@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google'
 import Header from '@/components/header'
 import Feed from '@/components/feed'
 import UploadModal from '@/components/UploadModal'
+import AddTodoBar from '@/components/addTodoBar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Header />
       <Feed />
       <UploadModal />
+      <AddTodoBar />
     </div>
   )
 }
