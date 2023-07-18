@@ -4,6 +4,7 @@ import Posts from './Posts';
 import MiniProfile from './MiniProfile';
 import Suggestions from './Suggestions';
 import { useSession } from 'next-auth/react';
+import Todos from './Todos';
 
 export default function Feed () {
   const {data: session} = useSession();
@@ -22,7 +23,7 @@ export default function Feed () {
             {/* Suggestions list */}
             <Suggestions />
             {/* todo lisr */}
-            
+            <Todos />
           </div>
         </section>
         
