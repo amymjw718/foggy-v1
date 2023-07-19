@@ -12,7 +12,7 @@ export default function Posts() {
       }
     )
     return unsubscribe;
-  })
+  },[db])
   // const posts = [
   //   {
   //     id:1,

@@ -1,7 +1,10 @@
 import React from 'react';
 import { EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
+import { useSession } from 'next-auth/react';
 
 export default function Post({id,username,userImg,img,caption}) {
+  const {data:session} = useSession();
+
   return (
     <div className='bg-white my-7 border rounded-md'>
         {/* post header */}
@@ -16,13 +19,14 @@ export default function Post({id,username,userImg,img,caption}) {
         <img src={img} className='object-cover w-full'/>
 
         {/* button */}
-        <div className='flex justify-between px-4 pt-4 pb-4'>
+        {session && (<div className='flex justify-between px-4 pt-4 pb-4'>
           <div className='flex space-x-4'>
             <HeartIcon className='btn'/>
             <ChatBubbleBottomCenterIcon className='btn' />
           </div>
           <BookmarkIcon className='btn' />
-        </div>
+        </div>)}
+        
 
         {/* comments */}
 
@@ -32,12 +36,13 @@ export default function Post({id,username,userImg,img,caption}) {
         </p>
 
         {/* post comment and input box */}
-        <form className='flex items-center p-4'>
+        {session && (<form className='flex items-center p-4'>
           <FaceSmileIcon className='h-7'/>
           <input className='border-none flex-1 focus:ring-0' type='text' placeholder='Enter your comment here...' />
           <button className='text-blue-400 font-bold'>Post</button>
         </form>
-
+      )}
+        
 
     </div>
   )
