@@ -89,6 +89,9 @@ export default function Post({id,username,userImg,img,caption}) {
         {/* comments */}
 
         <p className='p-5 truncate'>
+          {likes.length > 0 && (
+            <p className='mb-5 font-bold text-gray-400'>{likes.length} likes</p>
+          )}
           <span className='font-bold mr-2'>{username}</span>
           {caption}
         </p>
