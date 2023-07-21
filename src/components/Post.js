@@ -75,7 +75,7 @@ export default function Post({id,username,userImg,img,caption}) {
         <img src={img} className='object-cover w-full'/>
 
         {/* button */}
-        {session && (<div className='flex justify-between px-4 pt-4 pb-4'>
+        {session && (<div className='flex justify-between px-4 pt-4 pb-1'>
           <div className='flex space-x-4'>
             {hasLiked ? <HeartIconFilled onClick={likePost} className='text-red-400 btn'/> : <HeartIcon onClick={likePost} className='btn'/>}
             
