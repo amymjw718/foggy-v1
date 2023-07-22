@@ -35,7 +35,7 @@ export default function Todos() {
             <h3 className="font-bold text-gray-500">Todo list for today</h3>
         </div>
         {Todos.map(s => (
-            <div className='flex items-center justify-between mt-3'>
+            <div key={Todos.name} className='flex items-center justify-between mt-3'>
                 <input type='checkbox'/> 
                 {/* checked={s.isCompleted} */}
                 <div className='flex-1 ml-4'>
