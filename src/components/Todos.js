@@ -5,11 +5,13 @@ import { useRecoilState } from 'recoil';
 import { todoState } from '../../atom/modalAtom';
 import { collection, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { useSession } from 'next-auth/react';
 
 export default function Todos() {
 
     const [Todos, setTodos] = useState([]);
     const [openTodo, setOpenTodo] = useRecoilState(todoState);
+    const {data:session} = useSession();
 
     useEffect(() => {
         const unsubscribe = onSnapshot(
@@ -41,7 +43,9 @@ export default function Todos() {
         <div className="flex justify-between mb-5 text-sm">
             <h3 className="font-bold text-gray-500">Todo list for today</h3>
         </div>
-        {Todos.map(s => (
+        {Todos.map(s => 
+        s.data().uid === session?.user.uid &&
+        (
             <div key={s.data().timestamp} className='flex items-center justify-between mt-3'>
                 <input type='checkbox'/> 
                 {/* checked={s.isCompleted} */}
