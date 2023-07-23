@@ -3,6 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { todoState } from '../../atom/modalAtom';
+import { collection, onSnapshot, query } from 'firebase/firestore';
+import { db } from '../../firebase';
 
 export default function Todos() {
 
@@ -10,24 +12,29 @@ export default function Todos() {
     const [openTodo, setOpenTodo] = useRecoilState(todoState);
 
     useEffect(() => {
-        const Todos =
+        const unsubscribe = onSnapshot(
+            collection(db, "todos"), (snapshot) => {
+                setTodos(snapshot.docs);
+            }
+        )
+        // const Todos =
         //  array(3, (i) => (
             // {
-                [{
-                    name: "reading",
-                    isCompleted: false,
-                    date: "2023.7.18"
-                },{
-                    name: "writing",
-                    isCompleted: true,
-                    date: "2023.7.18"
-                }]
+                // [{
+                //     name: "reading",
+                //     isCompleted: false,
+                //     date: "2023.7.18"
+                // },{
+                //     name: "writing",
+                //     isCompleted: true,
+                //     date: "2023.7.18"
+                // }]
                 
 
             // };
-            setTodos(Todos);
+            // setTodos(Todos);
         //console.log(Suggestions);
-    },[])
+    },[db])
 
   return (
     <div className="mt-10 ml-5">
@@ -35,11 +42,11 @@ export default function Todos() {
             <h3 className="font-bold text-gray-500">Todo list for today</h3>
         </div>
         {Todos.map(s => (
-            <div key={Todos.name} className='flex items-center justify-between mt-3'>
+            <div key={s.data().timestamp} className='flex items-center justify-between mt-3'>
                 <input type='checkbox'/> 
                 {/* checked={s.isCompleted} */}
                 <div className='flex-1 ml-4'>
-                    <h2 className='font-semibold text-sm'>{s.name}</h2>
+                    <h2 className='font-semibold text-sm'>{s.data().todoName}</h2>
                     {/* <h3 className='text-gray-400 text-sm truncate w-[230px]'>{s.isCompleted}</h3> */}
                 </div>
                 <button className='font-semibold text-red-400 text-sm'>Delete</button>
