@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { useRecoilState } from 'recoil';
 import { todoState } from '../../atom/modalAtom';
-import { collection, onSnapshot, query } from 'firebase/firestore';
+import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestore';
 import { db } from '../../firebase';
 import { useSession } from 'next-auth/react';
 
@@ -19,24 +19,18 @@ export default function Todos() {
                 setTodos(snapshot.docs);
             }
         )
-        // const Todos =
-        //  array(3, (i) => (
-            // {
-                // [{
-                //     name: "reading",
-                //     isCompleted: false,
-                //     date: "2023.7.18"
-                // },{
-                //     name: "writing",
-                //     isCompleted: true,
-                //     date: "2023.7.18"
-                // }]
-                
 
-            // };
-            // setTodos(Todos);
-        //console.log(Suggestions);
     },[db])
+
+    async function deleteTodo(id){
+        // await deleteDoc(doc(db,"todos",id))
+        try {
+            await deleteDoc(doc(db, "todos", id));
+            console.log("Todo deleted successfully!");
+          } catch (error) {
+            console.error("Error deleting todo:", error.message);
+          }
+    }
 
   return (
     <div className="mt-10 ml-5">
@@ -53,7 +47,7 @@ export default function Todos() {
                     <h2 className='font-semibold text-sm'>{s.data().todoName}</h2>
                     {/* <h3 className='text-gray-400 text-sm truncate w-[230px]'>{s.isCompleted}</h3> */}
                 </div>
-                <button className='font-semibold text-red-400 text-sm'>Delete</button>
+                <button onClick={() => deleteTodo(s.id)} className='font-semibold text-red-400 text-sm'>Delete</button>
             </div>
         ))}
         <div className='flex text-center justify-center'>
