@@ -1,5 +1,5 @@
 import React, { useEffect, useState,  } from 'react';
-import { EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
+import { ArchiveBoxXMarkIcon, EllipsisHorizontalIcon, ChatBubbleBottomCenterIcon, HeartIcon, BookmarkIcon, FaceSmileIcon } from '@heroicons/react/24/outline';
 import { useSession } from 'next-auth/react';
 import { addDoc, collection, deleteDoc, doc, onSnapshot, orderBy, query, serverTimestamp, setDoc } from 'firebase/firestore';
 import { db } from '../../firebase';
@@ -7,7 +7,7 @@ import Moment from 'react-moment';
 import { HeartIcon as HeartIconFilled } from '@heroicons/react/24/solid';
 
 
-export default function Post({id,username,userImg,img,caption}) {
+export default function Post({id,username,userImg,uid,img,caption}) {
   const {data:session} = useSession();
   const [comment, setComment] = useState("");
   const [comments, setComments] = useState([]);
@@ -44,6 +44,7 @@ export default function Post({id,username,userImg,img,caption}) {
     await addDoc(collection(db, "posts", id, "comments"), {
       comment: commentToSend,
       username: session.user.username,
+      uid: session.user.uid,
       userImage: session.user.image,
       timestamp: serverTimestamp()
     })
@@ -58,7 +59,16 @@ export default function Post({id,username,userImg,img,caption}) {
         username: session.user.username,
       })
     }
-    
+  }
+
+  async function deletePost(id){
+    // await deleteDoc(doc(db,"todos",id))
+    try {
+        await deleteDoc(doc(db, "posts", id));
+        console.log("Todo deleted successfully!");
+      } catch (error) {
+        console.error("Error deleting todo:", error.message);
+      }
   }
 
   return (
@@ -68,7 +78,8 @@ export default function Post({id,username,userImg,img,caption}) {
         <div className='flex items-center p-5'>
             <img className='h-12 rounded-full object-cover border p-1 mr-3' src={userImg} alt={username}/>
             <p className='font-bold flex-1'>{username}</p>
-            <EllipsisHorizontalIcon className='h-5'/>
+            {uid === session?.user.uid && <ArchiveBoxXMarkIcon onClick={()=>deletePost(id)} className='h-5 btn text-red-400'/>}
+            
         </div>
         {/* post img */}
 
@@ -78,7 +89,6 @@ export default function Post({id,username,userImg,img,caption}) {
         {session && (<div className='flex justify-between px-4 pt-4 pb-1'>
           <div className='flex space-x-4'>
             {hasLiked ? <HeartIconFilled onClick={likePost} className='text-red-400 btn'/> : <HeartIcon onClick={likePost} className='btn'/>}
-            
             
             <ChatBubbleBottomCenterIcon className='btn' />
           </div>

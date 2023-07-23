@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Post from './Post'
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { db } from '../../firebase';
+import { data } from 'autoprefixer';
 
 export default function Posts() {
   const [posts, setPosts] = useState([]);
@@ -38,6 +39,7 @@ export default function Posts() {
             id={p.id}
             username={p.data().username}
             userImg={p.data().profileImg}
+            uid={p.data().uid}
             img={p.data().image}
             caption={p.data().caption}
           />
