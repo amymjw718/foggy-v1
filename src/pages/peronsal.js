@@ -22,10 +22,10 @@ export default function Peronsal() {
     <main className='grid grid-cols-1 md:grid-cols-3 md:max-w-6xl mx-auto'>
         
         <section className='md:col-span-2'>
-            <div className='flex space-x-3 mt-3 border border-gray-300 rounded-md shadow-md'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 mt-3'>
                 {posts.map(i => i.data().uid === session?.user.uid && (
-                    <div className='h-50 w-50 border border-gray-300 rounded-md shadow-md'>
-                        <img className='h-40' src={i.data().image}/>
+                    <div key={i.data().timestamp} className='border border-gray-300 rounded-md shadow-md'>
+                        <img className='w-full h-70 object-cover' src={i.data().image}/>
                     </div>
                 ))}
             </div>
