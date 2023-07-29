@@ -3,6 +3,9 @@ import Header from '@/components/header';
 import { db } from '../../firebase';
 import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
+import Todos from '@/components/Todos';
+import AddTodoBar from '@/components/addTodoBar';
+import Calender from '@/components/calender';
 
 
 export default function Peronsal() {
@@ -30,8 +33,11 @@ export default function Peronsal() {
                 ))}
             </div>
         </section>
-        <section className='md:inline-grid md:col-span-1'>
-            <p>Hello</p>
+        <section className='md:inline-grid md:col-span-1 mt-3 ml-3 flex-col justify-center items-center p-5'>
+            {/* <p>Hello</p> */}
+            <Calender />
+            <Todos />
+            <AddTodoBar />
         </section>
     </main>
     </>
