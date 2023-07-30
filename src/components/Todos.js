@@ -39,8 +39,8 @@ export default function Todos({pageFlag}) {
             <h3 className="font-bold text-gray-500">Todo list for today</h3>
         </div>
         {Todos.map(s => 
-        s.data().uid === session?.user.uid &&
-        pageFlag === "home" ? 
+        
+        pageFlag === "home" ? s.data().uid === session?.user.uid &&
         s.data().year === today.getFullYear() && s.data().month === today.getMonth()+1 && s.data().date === today.getDate() &&
         (   
             <div key={s.data().timestamp} className='flex items-center justify-between mt-3'>
@@ -52,7 +52,7 @@ export default function Todos({pageFlag}) {
                 </div>
                 <button onClick={() => deleteTodo(s.id)} className='font-semibold text-red-400 text-sm'>Delete</button>
             </div>
-        ) : (   
+        ) : s.data().uid === session?.user.uid && (   
             <div key={s.data().timestamp} className='flex items-center justify-between mt-3'>
                 <input type='checkbox'/> 
                 {/* checked={s.isCompleted} */}
