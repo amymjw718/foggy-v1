@@ -5,12 +5,15 @@ import { collection, onSnapshot, orderBy, query } from 'firebase/firestore';
 import { useSession } from 'next-auth/react';
 import Todos from '@/components/Todos';
 import AddTodoBar from '@/components/addTodoBar';
-import Calender from '@/components/calender';
+// import Calender from '@/components/calender';
+import Calendar from 'react-calendar';
+import 'react-calendar/dist/Calendar.css'
 
 
 export default function Peronsal() {
     const [posts, setPosts] = useState([]);
     const {data:session} = useSession();
+    const [calenderValue, setCalenderValue] = useState(new Date());
   useEffect(()=>{
     const unsubscribe = onSnapshot(
       query(collection(db, "posts"), orderBy(("timestamp"),"desc")), (snapshot)=>{
@@ -35,8 +38,10 @@ export default function Peronsal() {
         </section>
         <section className='md:inline-grid md:col-span-1 mt-3 ml-3 flex-col justify-center items-center p-5'>
             {/* <p>Hello</p> */}
-            <Calender />
-            <Todos />
+            <div className='mt-1 flex items-center justify-center'>
+                <Calendar value={calenderValue} setCalenderValue={setCalenderValue} />
+            </div>
+            <Todos pageFlag="personal"/>
             <AddTodoBar />
         </section>
     </main>

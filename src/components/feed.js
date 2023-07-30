@@ -23,7 +23,7 @@ export default function Feed () {
             {/* Suggestions list */}
             <Suggestions />
             {/* todo lisr */}
-            <Todos />
+            <Todos pageFlag="home"/>
           </div>
         </section>
         
