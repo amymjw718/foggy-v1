@@ -7,7 +7,7 @@ import { collection, deleteDoc, doc, onSnapshot, query } from 'firebase/firestor
 import { db } from '../../firebase';
 import { useSession } from 'next-auth/react';
 
-export default function Todos({pageFlag}) {
+export default function Todos({pageFlag, chosenDate}) {
 
     const [Todos, setTodos] = useState([]);
     const [openTodo, setOpenTodo] = useRecoilState(todoState);
@@ -52,7 +52,7 @@ export default function Todos({pageFlag}) {
                 </div>
                 <button onClick={() => deleteTodo(s.id)} className='font-semibold text-red-400 text-sm'>Delete</button>
             </div>
-        ) : s.data().uid === session?.user.uid && (   
+        ) : s.data().uid === session?.user.uid && s.data().year === chosenDate.getFullYear()  && s.data().month === chosenDate.getMonth()+1 && s.data().date === chosenDate.getDate() && (   
             <div key={s.data().timestamp} className='flex items-center justify-between mt-3'>
                 <input type='checkbox'/> 
                 {/* checked={s.isCompleted} */}

@@ -7,7 +7,7 @@ import Todos from '@/components/Todos';
 import AddTodoBar from '@/components/addTodoBar';
 // import Calender from '@/components/calender';
 import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css'
+import 'react-calendar/dist/Calendar.css';
 
 
 export default function Peronsal() {
@@ -39,9 +39,9 @@ export default function Peronsal() {
         <section className='md:inline-grid md:col-span-1 mt-3 ml-3 flex-col justify-center items-center p-5'>
             {/* <p>Hello</p> */}
             <div className='mt-1 flex items-center justify-center'>
-                <Calendar value={calenderValue} setCalenderValue={setCalenderValue} />
+                <Calendar value={calenderValue} onChange={setCalenderValue} />
             </div>
-            <Todos pageFlag="personal"/>
+            <Todos pageFlag="personal" chosenDate={calenderValue}  />
             <AddTodoBar />
         </section>
     </main>
