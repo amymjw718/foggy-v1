@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^2.0.18",
+    "chart.js": "^4.3.3",
     "eslint": "8.37.0",
     "eslint-config-next": "13.2.4",
     "firebase": "^10.0.0",
@@ -19,6 +20,7 @@
     "next-auth": "^4.22.1",
     "react": "18.2.0",
     "react-calendar": "^4.6.0",
+    "react-chartjs-2": "^5.2.0",
     "react-dom": "18.2.0",
     "react-modal": "^3.16.1",
     "react-moment": "^1.1.3",

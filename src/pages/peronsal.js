@@ -8,6 +8,7 @@ import AddTodoBar from '@/components/addTodoBar';
 // import Calender from '@/components/calender';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
+import VulnChart from '@/components/barChart';
 
 
 export default function Peronsal() {
@@ -35,6 +36,7 @@ export default function Peronsal() {
                     </div>
                 ))}
             </div>
+            <VulnChart />
         </section>
         <section className='md:inline-grid md:col-span-1 mt-3 ml-3 flex-col justify-center items-center p-5'>
             {/* <p>Hello</p> */}
