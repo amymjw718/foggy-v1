@@ -26,27 +26,43 @@ import { data } from "autoprefixer";
         var Friday = 0;
         var Saturday = 0;
         var Sunday = 0;
-        const currentDate = new Date();
-        const lastWeekDate = new Date();
 
+        // const currentDate = new Date();
+        // const lastWeekDate = new Date();
+
+        // const dayOfWeek = currentDate.getDay(); // Sunday is 0, Monday is 1, and so on
+
+        // const daysToSubtract = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Adjust for Sunday
+        // const firstDateOfWeek = new Date(currentDate);
+        // firstDateOfWeek.setDate(currentDate.getDay() - daysToSubtract);
+
+        // lastWeekDate.setDate(currentDate.getDate() - 7);
+        const currentDate = new Date();
         const dayOfWeek = currentDate.getDay(); // Sunday is 0, Monday is 1, and so on
 
         const daysToSubtract = dayOfWeek === 0 ? 6 : dayOfWeek - 1; // Adjust for Sunday
         const firstDateOfWeek = new Date(currentDate);
         firstDateOfWeek.setDate(currentDate.getDate() - daysToSubtract);
 
-        lastWeekDate.setDate(currentDate.getDate() - 7);
+        // console.log(firstDateOfWeek);
+
+        const lastWeekDate = new Date();
+        lastWeekDate.setDate(firstDateOfWeek.getDate() - 7);
+
+        console.log(lastWeekDate)
+
+
 
         posts.map((p)=>{
             const date = p.data().timestamp.toDate();
-            console.log(date);
-            date.getDay() === 0 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Sunday++;
-            date.getDay() === 1 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Monday++;
-            date.getDay() === 2 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Tuesday++;
-            date.getDay() === 3 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Wednesday++;
-            date.getDay() === 4 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Thursday++;
-            date.getDay() === 5 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Friday++;
-            date.getDay() === 6 && firstDateOfWeek >= lastWeekDate && firstDateOfWeek <= currentDate && Saturday++;
+            // console.log(date);
+            p.data().uid === session?.user.uid && date.getDay() === 0 && date >= lastWeekDate && date <= firstDateOfWeek && Sunday++;
+            p.data().uid === session?.user.uid && date.getDay() === 1 && date >= lastWeekDate && date <= currentDate && Monday++;
+            p.data().uid === session?.user.uid && date.getDay() === 2 && date >= lastWeekDate && date <= currentDate && Tuesday++;
+            p.data().uid === session?.user.uid && date.getDay() === 3 && date >= lastWeekDate && date <= currentDate && Wednesday++;
+            p.data().uid === session?.user.uid && date.getDay() === 4 && date >= lastWeekDate && date <= currentDate && Thursday++;
+            p.data().uid === session?.user.uid && date.getDay() === 5 && date >= lastWeekDate && date <= currentDate && Friday++;
+            p.data().uid === session?.user.uid && date.getDay() === 6 && date >= lastWeekDate && date <= currentDate && Saturday++;
         })
 
       return (
@@ -58,7 +74,7 @@ import { data } from "autoprefixer";
                 {
                   label: "Last weeks posts number",
                   data: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday],
-                  backgroundColor: ["red", "yellow", "blue", "black", "green", "skyblue", "pink"],
+                  backgroundColor: ["red", "yellow", "blue", "gray", "green", "skyblue", "pink"],
                   borderWidth: 5
                 },
               ]
