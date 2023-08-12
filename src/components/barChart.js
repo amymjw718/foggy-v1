@@ -56,7 +56,7 @@ import { data } from "autoprefixer";
         posts.map((p)=>{
             const date = p.data().timestamp.toDate();
             // console.log(date);
-            p.data().uid === session?.user.uid && date.getDay() === 0 && date >= lastWeekDate && date <= firstDateOfWeek && Sunday++;
+            p.data().uid === session?.user.uid && date.getDay() === 0 && date >= lastWeekDate && date <= currentDate && Sunday++;
             p.data().uid === session?.user.uid && date.getDay() === 1 && date >= lastWeekDate && date <= currentDate && Monday++;
             p.data().uid === session?.user.uid && date.getDay() === 2 && date >= lastWeekDate && date <= currentDate && Tuesday++;
             p.data().uid === session?.user.uid && date.getDay() === 3 && date >= lastWeekDate && date <= currentDate && Wednesday++;
