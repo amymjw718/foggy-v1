@@ -106,7 +106,7 @@ export default function Post({id,username,userImg,uid,img,caption}) {
           {caption}
         </p>
         {comments.length > 0 && (
-          <div className='mx-10 max-h-24 overflow-y-scroll'>
+          <div key={c.data().id} className='mx-10 max-h-24 overflow-y-scroll'>
             {comments.map((c)=>(
               <div className='flex items-center space-x-2 mb-2'>
                 <img className='h-7 rounded-full object-cover' src={c.data().userImage} alt='userImage' />
