@@ -21,7 +21,7 @@ export default function Suggestions() {
     },[])
 
   return (
-    <div className="mt-4 ml-5">
+    <div key={s.id} className="mt-4 ml-5">
         <div className="flex justify-between mb-5 text-sm">
             <h3 className="font-bold text-gray-400">Suggestions for user</h3>
             <button className="text-gray-600 font-semibold">See all</button>
